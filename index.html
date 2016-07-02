@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {
+            background-image: url('ss.png');
+            margin: 0;
+        }
+        @font-face {
+            font-family: 'Open Sans Light';
+            src: url('https://mozorg.cdn.mozilla.net/media/fonts/OpenSans-Light-webfont.eot?#iefix') format('embedded-opentype'), url('https://mozorg.cdn.mozilla.net/media/fonts/OpenSans-Light-webfont.woff') format('woff'), url('https://mozorg.cdn.mozilla.net/media/fonts/OpenSans-Light-webfont.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        #tabzilla {
+            float: right;
+            position: relative;
+        }
+        #tabzilla a {
+            text-indent: 120%;
+            white-space: nowrap;
+            overflow: hidden;
+            background-image: url('../media/img/tabzilla-static.png');
+            background-repeat: no-repeat;
+            display: block;
+            height: 37px;
+            position: relative;
+            width: 147px;
+            z-index: 2;
+        }
+        @media (-webkit-min-device-pixel-ratio: 1.5),
+        (min--moz-device-pixel-ratio: 1.5),
+        (-o-min-device-pixel-ratio: 3/2),
+        (min-resolution: 1.5dppx) {
+            #tabzilla a {
+                background-image: url('tabzilla-static-high-res.png');
+                -webkit-background-size: 147px 37px;
+                background-size: 147px 37px;
+            }
+        }
+        #tabzilla:before {
+            background-color: transparent;
+            content: '';
+            display: block;
+            height: 26px;
+            left: 28px;
+            position: absolute;
+            top: 0;
+            width: 88px;
+            z-index: 1;
+        }
+        html[dir='rtl'] #tabzilla {
+            float: left;
+        }
+        .left,
+        .add {
+            position: absolute;
+            top: 30%;
+            width: 100%;
+            text-align: center;
+            color: #3C3C3C;
+            font-family: 'Open Sans Light';
+            font-size: 60px;
+        }
+        .add {
+            top: 50%;
+            font-size: 40px;
+        }
+    </style>
+    <script src="countdown.js"></script>
+    <script>
+        var eventTime = 1464789600; //Timestamp of the end
+        var currentTime = 1464788453; //Current timestamp
+        var diffTime = eventTime - currentTime;
+        var duration = moment.duration(diffTime * 1000, 'milliseconds');
+        var interval = 1000;
+
+        setInterval(function() {
+            duration = moment.duration(duration - interval, 'milliseconds');
+            document.querySelector('strong').innerHTML = (duration.hours() + ":" + duration.minutes() + ":" + duration.seconds() + 's');
+        }, interval);
+    </script>
+</head>
+<body>
+    <div id="tabzilla">
+        <a href="https://www.mozilla.org/">Mozilla</a>
+    </div>
+    <div class="left">Time left: <strong></strong></div>
+    <div class="add">Add you project: https://goo.gl/yUAvLk</div>
+</body>
+</html>
