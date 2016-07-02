@@ -70,8 +70,8 @@
     </style>
     <script src="countdown.js"></script>
     <script>
-        var eventTime = 1464789600; //Timestamp of the end
-        var currentTime = 1464788453; //Current timestamp
+        var currentTime = moment().format('x'); //Current timestamp
+        var eventTime = moment("2016-07-02 23:59", "YYYY-MM-DD HH:mm").format('x'); //Timestamp of the end
         var diffTime = eventTime - currentTime;
         var duration = moment.duration(diffTime * 1000, 'milliseconds');
         var interval = 1000;
